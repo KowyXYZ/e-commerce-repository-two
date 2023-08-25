@@ -7,7 +7,7 @@ function HeaderTopBar() {
         <div className='flex justify-between container mx-auto items-center'>
             <div className='gap-4 flex justify-center items-center'>
                 <NavLink to='/'>Home &#9474;</NavLink>
-                <NavLink>Products &#9474;</NavLink>
+                <NavLink to='/products'>Products &#9474;</NavLink>
                 <NavLink>About us &#9474;</NavLink>
                 <NavLink>Stores &#9474;</NavLink>
                 <NavLink>Contact us </NavLink>
