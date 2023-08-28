@@ -2,22 +2,41 @@ import React, { useEffect, useState } from 'react'
 import RenderProducts from '../../Utilities/RenderProducts'
 import SingleProduct from './SingleProduct'
 import RenderCatergories from '../../Utilities/RenderCategories'
+import { Radio } from 'antd';
 
-import { Input, Radio, Space } from 'antd';
-// import {  Checkbox , Space } from 'antd';
+//assets
+import grid from '../../Assets/Icons/grid.png'
+import list from '../../Assets/Icons/list.png'
+
 
 function AllProducts() {
 
-    // const onChange = (e) => {
-    //     console.log(`checked = ${e.target.checked}`);
-    //   };
-    const [value, setValue] = useState(0);
-    const onChange = (e) => {
-      console.log('radio checked', e.target.value);
-      setValue(e.target.value);
-      console.log(value)
-    };
 
+    const [val, setVal] = useState('all')
+    let changeVal = (e) => {
+        setVal(e.target.value)
+    }
+    
+    // const rendering = () => {
+    //     if(val === 'all') {
+    //         products.map( (el, index) => {
+    //             console.log('done')
+    //             return (
+    //                 <SingleProduct item={el} key={index}/>
+    //             )
+    //         })
+    //     } else if (val === products.category) {
+    //         products.filter(item => item.category.includes(val)).map((el, index) => {
+    //             console.log('ok')
+    //             return(
+    //                 <SingleProduct item={el} key={index}/>
+    //             )
+    //         })
+    //     }
+    // }
+
+    const [styling, setStyling] = useState('grid')
+    const [sorting, setSorting] = useState('High to Low')
 
     const [products, setProducts] = useState([])
     const [categories, setCategories] = useState([])
@@ -25,42 +44,54 @@ function AllProducts() {
     useEffect( () => {
         RenderProducts().then( (product) => setProducts(product.products))
         RenderCatergories().then( (category) => setCategories(category))
-    }, [])
-
-    console.log(categories)
+    }, [val])
 
 
   return (
-    <div className='container mx-auto w-full flex py-6'>
+    <div className='flex-col container mx-auto w-full flex  gap-5'>
+        <div className='border-2 flex gap-4 items-center justify-between px-2 py-2 rounded-2xl'>
+            <p className='text-[gray]'>Sory by :  <span className='text-[#000]'>{sorting}</span></p>
+            <div className='flex gap-4 items-center justify-center'>
+                <img onClick={() => setStyling('list')} src={list} alt="list" />
+                <img onClick={() => setStyling('grid')} src={grid} alt="grid" />
+
+                
+            </div>
+           
+        </div>
+
+
+        <div className='w-full flex gap-5'>
         <div className='flex flex-col justify-start items-start flex-wrap gap-5 bg-[#fff] p-8 h-full border-2 rounded-3xl '>
             <h1 className='text-[30px] font-semibold'>Categories</h1>
-            <Radio.Group className='flex flex-col gap-5' onChange={onChange} value={value}>
-                <Radio value={0}>All</Radio>
-            {categories.map( (cat, idx) => {
-                return (
-                    // <Checkbox onChange={onChange}>{cat}</Checkbox>
-                   
-                    <Space direction="vertical">
-                        
-                      <Radio value={idx + 1 }>{cat}</Radio>
-                    </Space>
-                 
-                )
-            })}
-             </Radio.Group>
+            <Radio.Group onChange={changeVal} className='flex flex-col gap-5' defaultValue="all" buttonStyle="solid">
+                <Radio.Button value='all'>All</Radio.Button>
+                    {categories.map( (cat, idx) => {
+                        return (
+
+                            <Radio.Button value={cat}>{cat}</Radio.Button>
+                        )
+                    })}
+            </Radio.Group>
         </div>
 
 
 
-        <div className='container mx-auto flex justify-center items-center flex-wrap gap-10'>
-            {products.map((item, index) => {
-                return (
-                    <SingleProduct item={item} key={index}/>
-                )
-            })}
+        <div className='container mx-auto flex justify-end items-start flex-wrap gap-8 '>
+            {
+               val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
+            }
+
         </div>
+
+        </div>
+       
+       
     </div>
   )
 }
+
+
+
 
 export default AllProducts

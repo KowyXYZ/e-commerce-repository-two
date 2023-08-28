@@ -6,10 +6,10 @@ import cart from '../../Assets/Icons/navbarcart.png'
 
 function SingleProduct({item}) {
   return (
-    <div className='flex-col flex justify-center items-center border-2 p-4 py-2 pb-5  drop-shadow-xl  rounded-3xl space-y-2'>
+    <div className='flex-col flex justify-center text-center items-center border-2 p-4 py-2 pb-5  drop-shadow-xl  rounded-3xl space-y-2'>
       <p>In stock: {item.stock}</p>
       <img className='w-64 h-64 object-cover rounded-3xl' src={item.thumbnail} alt="" />
-      <p>{item.title}</p>
+      <p className='w-[200px]'>{item.title}</p>
       <p>{item.price}$</p>
 
       <div className='flex gap-5 mt-4'>
