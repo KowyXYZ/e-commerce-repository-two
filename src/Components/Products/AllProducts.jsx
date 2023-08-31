@@ -38,7 +38,7 @@ function AllProducts() {
     //     }
     // }
 
-    const [sorting, setSorting] = useState('High to Low')
+    const [sorting, setSorting] = useState('Default')
 
     const [products, setProducts] = useState([])
     const [categories, setCategories] = useState([])
