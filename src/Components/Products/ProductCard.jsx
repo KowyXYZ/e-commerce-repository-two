@@ -56,7 +56,7 @@ function ProductCard() {
 
             <div className='flex flex-col items-center justify-center gap-8  p-4 '>
                 <div className='flex items-center justify-center flex-col border-2 w-full rounded-3xl p-2 '>
-                    <img className='rounded-2xl h-96 w-96  object-contain' src={loader.images[current]} alt="" />
+                    <img className='rounded-2xl h-[500px] w-[800px]  object-contain' src={loader.images[current]} alt="" />
                     
                 </div>
                 <p>Currently in stock: {loader.stock}</p>
