@@ -29,7 +29,7 @@ function ProductCard() {
                 <p className='text-[gray] w-[400px] text-[16px]'>{loader.description}</p>
                 <p className='text-[#208a81]'>{loader.category}</p>
                 <div className='flex items-start justify-center gap-2 mt-4 '>
-                <p className='text-[20px] '>New price: <span className='font-semibold'>{final}$</span></p>
+                <p className='text-[20px] '>New price: <span className='font-semibold'>{ Math.round(final)}$</span></p>
                     <div className='flex flex-col justify-center items-end'>
                    
                     <p className='line-through text-[20px] text-[gray]'>{loader.price}$</p>
