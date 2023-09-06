@@ -1,10 +1,11 @@
 import React from 'react'
 import srce from '../../Assets/Icons/srce.png'
 import cart from '../../Assets/Icons/navbarcart.png'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Rate } from 'antd';
 import Link from 'antd/es/typography/Link';
 import { NavLink } from 'react-router-dom';
+import { addToCart } from '../../Store/sliceCart';
 
 
 function SingleProduct({item}) {
@@ -12,18 +13,22 @@ function SingleProduct({item}) {
 
   const { status } = useSelector( (state) => state.styling)
   // let ratingtext = item.description.slice(0, 30) + '...'
-
+  const dispatch = useDispatch()
  
+  const cartHandler = (item) => {
+    dispatch(addToCart(item))
+  }
+
   return (
 
     
     <div className=''>
       {status === 'list' ? 
 
-      <NavLink to={`/products/product/${item.id}`}>
+      // <NavLink to={`/products/product/${item.id}`}>
       <div className='flex gap-10 w-[100vh] justify-start text-start items-center border-2  p-4 py-2  drop-shadow-xl rounded-3xl space-y-2'>
      
-      <img className='w-64 h-64 object-cover rounded-3xl' src={item.thumbnail} alt="" />
+         <img className='w-64 h-64 object-cover rounded-3xl' src={item.thumbnail} alt="" />
         <div className='flex-col space-y-2'>
 
           <p className='text-[#208a81]'>{item.category}</p>
@@ -36,8 +41,8 @@ function SingleProduct({item}) {
                 <img className='w-8' src={srce} alt="" />
             </div>
 
-            <div className='flex justify-center items-center border-2 p-2'>
-                <p>Add to cart</p>
+            <div  className='flex justify-center items-center border-2 p-2'>
+            <button onClick={() => cartHandler(item)}>Add to cart</button>
                 <img className='w-8' src={cart} alt="" />
             </div>
         
@@ -45,7 +50,7 @@ function SingleProduct({item}) {
         </div>
        
       </div>
-      </NavLink>
+      // </NavLink>
      
       
       : 
@@ -64,8 +69,8 @@ function SingleProduct({item}) {
                 <img className='w-8' src={srce} alt="" />
             </div>
 
-            <div className='flex justify-center items-center border-2 p-2'>
-                <p>Add to cart</p>
+            <div  className='flex justify-center items-center border-2 p-2'>
+            <button onClick={() => cartHandler(item)}>Add to cart</button>
                 <img className='w-8' src={cart} alt="" />
             </div>
         
