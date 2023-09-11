@@ -27,8 +27,9 @@ function SingleProduct({item}) {
 
       // <NavLink to={`/products/product/${item.id}`}>
       <div className='flex gap-10 w-[100vh] justify-start text-start items-center border-2  p-4 py-2  drop-shadow-xl rounded-3xl space-y-2'>
-     
-         <img className='w-64 h-64 object-cover rounded-3xl' src={item.thumbnail} alt="" />
+          <NavLink to={`/products/product/${item.id}`}>
+             <img className='w-64 h-64 object-cover rounded-3xl' src={item.thumbnail} alt="" />
+          </NavLink>
         <div className='flex-col space-y-2'>
 
           <p className='text-[#208a81]'>{item.category}</p>
@@ -55,10 +56,14 @@ function SingleProduct({item}) {
       
       : 
       
-      <NavLink to={`/products/product/${item.id}`}>
+      // <NavLink to={`/products/product/${item.id}`}>
       <div className='flex-col flex justify-center text-center items-center border-2 p-4 py-2 pb-5  drop-shadow-xl  rounded-3xl space-y-2'>
       <p className='text-[#208a81]'>{item.category}</p>
-      <img className='w-64 h-64 object-cover rounded-3xl' src={item.thumbnail} alt="" />
+
+      <NavLink to={`/products/product/${item.id}`}>
+        <img className='w-64 h-64 object-cover rounded-3xl' src={item.thumbnail} alt="" />
+      </NavLink>
+     
       <p className='w-[250px] font-semibold'>{item.title}</p>
       {/* <p className='text-[gray] text-[14px] w-[150px]'>{ratingtext}</p> */}
       <Rate disabled defaultValue={item.rating} />
@@ -76,7 +81,7 @@ function SingleProduct({item}) {
         
       </div>
       </div>
-      </NavLink>
+      // </NavLink>
     
       }
      

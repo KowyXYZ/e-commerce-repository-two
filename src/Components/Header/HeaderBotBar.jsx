@@ -1,15 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import caret from '../../Assets/Icons/navbarcart.png'
-import search from '../../Assets/Icons/search.png'
+import searchbar from '../../Assets/Icons/search.png'
 import user from '../../Assets/Icons/user.png'
 import bag from '../../Assets/Icons/bag.png'
 import {Link} from 'react-router-dom'
 
 import {useSelector} from 'react-redux'
+import RenderSearch from '../../Utilities/RenderSearch'
 
 function HeaderBotBar() {
 
     const cart = useSelector((state) => state.cart)
+    
+    // const [search, setSearch] = useState('')
+
+    // const handleSearch = (e) => {
+    //     setSearch(e.target.value)
+    //     console.log(search)
+    // }
+
+    // const [setsearchdata, setSetsearchdata] = useState([])
+
+    // const fetchSearchProducts = () => {
+    //     RenderSearch(search).then((data) => setSetsearchdata(data.products))
+    // }
 
   return (
     <div className='w-full bg-[#fff] py-6'>
@@ -40,22 +54,32 @@ function HeaderBotBar() {
                     </div>
                 </div>
               
-
-
-              
+{/* 
+                <div>
+                    {setsearchdata.map((el, index) => {
+                        return (
+                            <div>
+                                <p>{el.title}</p>
+                            </div>
+                        )
+                    })}
+                </div>
+               */}
 
                 <div className='border-2 py-1 px-3'>
                     <div className='flex justify-center items-center gap-3'>
-                        <img className='w-8' src={search} alt="" />
+                       
                     <input type='text' className='w-[400px] outline-none' placeholder='Search . . .'/>
+                    {/* <img onClick={() => fetchSearchProducts()} className='w-8' src={searchbar} alt="" /> */}
+                    <img className='w-8' src={searchbar} alt="" />
                     </div>
                 </div>
 
                 <div>
-                    <div className='flex justify-center items-center'>
+                    <Link to='/products' className='flex justify-center items-center'>
                         <p className='font-semibold'>Go to products</p>
                         <img className='w-12' src={bag} alt="" />
-                    </div>
+                    </Link>
                 </div>
             </div>
 
