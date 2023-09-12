@@ -3,13 +3,16 @@ import RenderProducts from '../../Utilities/RenderProducts'
 import SingleProduct from './SingleProduct'
 import RenderCatergories from '../../Utilities/RenderCategories'
 import { Radio } from 'antd';
-
+import searchbar from '../../Assets/Icons/search.png'
 //assets
 import grid from '../../Assets/Icons/grid.png'
 import list from '../../Assets/Icons/list.png'
 
 import {  useDispatch, useSelector } from 'react-redux'
 import { getStatus } from '../../Store/sliceStyling';
+
+import { getSearchText } from '../../Store/sliceSearch';
+import { Link } from 'react-router-dom';
 
 
 function AllProducts() {
@@ -45,14 +48,19 @@ function AllProducts() {
 
     const dispatch = useDispatch()
 
-    const { status } = useSelector( (state) => state.styling)
+    const { status } = useSelector( (state) => state.styling) //status for grid and list stlying
 
 
+    const [search, setSearch] = useState('')
 
+    const handleSearch = (e) => {
+        dispatch(getSearchText(e.target.value))  
+    }
 
     useEffect( () => {
         RenderProducts().then( (product) => setProducts(product.products))
         RenderCatergories().then( (category) => setCategories(category))
+
     }, [])
 
 
@@ -60,6 +68,17 @@ function AllProducts() {
     <div className='flex-col container mx-auto w-full flex  gap-5'>
         <div className='border-2 flex gap-4 items-center justify-between px-2 py-2 rounded-2xl'>
             <p className='text-[gray]'>Sory by :  <span className='text-[#000]'>{sorting}</span></p>
+
+            <div className='border-2 rounded-3xl border-[gray] py-1 px-3'>
+                    <div className='flex justify-center items-center gap-3'>
+                       
+                    <input onChange={(e) => handleSearch(e)} type='text' className='w-[400px] outline-none' placeholder='Search . . .'/>
+                    <Link to='/products/searching'>
+                         <img  className='w-8 cursor-pointer' src={searchbar} alt="" />
+                    </Link>
+                   
+                    </div>
+                </div>
             <div className='flex gap-4 items-center justify-center'>
                 <img onClick={ () => {dispatch(getStatus('list'))}} src={list} alt="list" />
                 <img onClick={ () => {dispatch(getStatus('grid'))}} src={grid} alt="grid" />
@@ -68,8 +87,8 @@ function AllProducts() {
             </div>
            
         </div>
+    
 
-        
         <div className='w-full flex gap-5'>
 
 
@@ -87,14 +106,19 @@ function AllProducts() {
                 </div>
 
 
-                 { status === 'list' ? <div className='container mx-auto flex flex-col items-start justify-end gap-8'>{
-                    val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
-                    }</div> :  <div className='container mx-auto flex justify-end items-start flex-wrap gap-8 '>
+                 { status === 'list' ?
+                     <div className='container mx-auto flex flex-col items-start justify-end gap-8'>
                     {
                     val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
                     }
-
-                </div>}               
+                    </div>
+                    
+                    :  
+                    <div className='container mx-auto flex justify-end items-start flex-wrap gap-8 '>
+                    {
+                    val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
+                    }
+                    </div>}               
                 {/* <div className='container mx-auto flex justify-end items-start flex-wrap gap-8 '>
                     {
                     val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})

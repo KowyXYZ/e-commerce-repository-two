@@ -30,7 +30,7 @@ function HeaderBotBar() {
         <div className='container mx-auto flex justify-center items-center'>
 
 
-            <div className='flex justify-center gap-40 items-center'>
+            <div className='flex justify-between gap-[900px] items-center'>
 
                 <div className='flex gap-8'>
                     <div className='flex items-center justify-center gap-5'>
@@ -66,14 +66,7 @@ function HeaderBotBar() {
                 </div>
                */}
 
-                <div className='border-2 py-1 px-3'>
-                    <div className='flex justify-center items-center gap-3'>
-                       
-                    <input type='text' className='w-[400px] outline-none' placeholder='Search . . .'/>
-                    {/* <img onClick={() => fetchSearchProducts()} className='w-8' src={searchbar} alt="" /> */}
-                    <img className='w-8' src={searchbar} alt="" />
-                    </div>
-                </div>
+                
 
                 <div>
                     <Link to='/products' className='flex justify-center items-center'>
