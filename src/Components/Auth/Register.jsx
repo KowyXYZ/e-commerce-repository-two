@@ -2,6 +2,8 @@ import React from 'react'
 import { useRef, useState, useEffect } from 'react'
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useDispatch } from 'react-redux';
+import { storeAccount } from '../../Store/sliceAuthReg';
 
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
@@ -60,22 +62,33 @@ function Register() {
         setErrMsg('')
     }, [user, pwd, matchPwd])
 
+    
+    
     const handleSubmit = async (e) => {
-      e.prevent.default()
+   
     
       const v1 = USER_REGEX.test(user)
       const v2 = PWD_REGEX.test(pwd)
+
+      let account = {
+        username: user,
+        password: pwd
+      }
+  
 
       if(!v1 || !v2) {
         setErrMsg('Invalid Entry!')
         return
       }
 
-      console.log(user, pwd)
+
       setSuccess(true)
-      console.log(success)
+      dispatch(storeAccount(account))
+
 
     } 
+
+    const dispatch = useDispatch()
 
 
   return (
@@ -160,6 +173,8 @@ function Register() {
 
                         <button className='disabled:bg-[#a0f2df] px-16  bg-[#62D0B6] mt-4 text-[#fff] rounded-xl py-2' disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
           </form>
+
+        <button onClick={handleSubmit}>Click</button>
 
           <div className='flex flex-col text-center mt-5'>
           <p className='text-[18px]'>Already registered?</p>
