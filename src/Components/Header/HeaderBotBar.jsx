@@ -46,7 +46,7 @@ function HeaderBotBar() {
                     <div className='flex items-center justify-center gap-5'>
                         <div className='flex flex-col items-center justify-center'>
                             <p>User</p>
-                            <p className='font-semibold'>Go to profile</p>
+                            <Link to='/user/login' className='font-semibold'>Go to profile</Link>
                         </div>
                         <div className='bg-[#F8F8F8] border-2 p-3 rounded-[50px]'>
                             <img className=' w-8' src={user} alt="" />

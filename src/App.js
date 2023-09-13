@@ -6,6 +6,8 @@ import ProductsPage from './Pages/ProductsPage';
 import ProductCard, { productCardLoader } from './Components/Products/ProductCard';
 import CartPage from './Pages/CartPage';
 import SearchProducts from './Components/Products/SearchProducts';
+import Register from './Components/Auth/Register';
+import AuthPage from './Pages/AuthPage';
 
 const router = createBrowserRouter(
     createRoutesFromElements(
@@ -15,6 +17,8 @@ const router = createBrowserRouter(
         <Route path='/products/product/:id' element={<ProductCard/>} loader={productCardLoader}/>
         <Route path='/cart' element={<CartPage/>}/>
         <Route path='/products/searching' element={<SearchProducts/>}/>
+        <Route path='/user/login' element={<AuthPage/>}/>
+        <Route path='/user/register' element={<Register/>}/>
       </Route>
     )
     
