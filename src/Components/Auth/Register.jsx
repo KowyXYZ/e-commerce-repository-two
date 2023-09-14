@@ -2,7 +2,7 @@ import React from 'react'
 import { useRef, useState, useEffect } from 'react'
 import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { storeAccount } from '../../Store/sliceAuthReg';
 
 
@@ -62,8 +62,9 @@ function Register() {
         setErrMsg('')
     }, [user, pwd, matchPwd])
 
-    
-    
+
+    const customId = Math.floor(Math.random() * 9999)
+
     const handleSubmit = async (e) => {
    
     
@@ -72,7 +73,8 @@ function Register() {
 
       let account = {
         username: user,
-        password: pwd
+        password: pwd,
+        id: customId
       }
   
 

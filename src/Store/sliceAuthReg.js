@@ -8,9 +8,17 @@ const sliceAuthReg = createSlice({
     },
     reducers: {
         storeAccount: (state, action) => {
-            const tempAcc = action.payload
-            state.accounts.push(tempAcc)
-        }
+
+            const tempacc = state.accounts.some(item => item.user === action.payload.user);
+            if(tempacc === true) {
+                console.log('account already exists')
+            } else if(tempacc === false){
+                console.log('new account added')
+                state.accounts.push(action.payload)
+            }
+
+        },
+
     }
 })
 
