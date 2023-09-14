@@ -4,7 +4,7 @@ import { faCheck, faTimes, faInfoCircle } from '@fortawesome/free-solid-svg-icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useDispatch, useSelector } from 'react-redux';
 import { storeAccount } from '../../Store/sliceAuthReg';
-
+import { useHistory, useNavigate } from 'react-router-dom';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
@@ -63,30 +63,26 @@ function Register() {
     }, [user, pwd, matchPwd])
 
 
-    const customId = Math.floor(Math.random() * 9999)
+    const navigate = useNavigate()
+
 
     const handleSubmit = async (e) => {
-   
     
       const v1 = USER_REGEX.test(user)
       const v2 = PWD_REGEX.test(pwd)
 
-      let account = {
+      const account = {
         username: user,
-        password: pwd,
-        id: customId
+        password: pwd
       }
-  
 
       if(!v1 || !v2) {
         setErrMsg('Invalid Entry!')
         return
       }
-
-
       setSuccess(true)
       dispatch(storeAccount(account))
-
+      navigate('/')
 
     } 
 
@@ -176,7 +172,7 @@ function Register() {
                         <button className='disabled:bg-[#a0f2df] px-16  bg-[#62D0B6] mt-4 text-[#fff] rounded-xl py-2' disabled={!validName || !validPwd || !validMatch ? true : false}>Sign Up</button>
           </form>
 
-        <button onClick={handleSubmit}>Click</button>
+        {/* <button onClick={handleSubmit}>Click</button> */}
 
           <div className='flex flex-col text-center mt-5'>
           <p className='text-[18px]'>Already registered?</p>
