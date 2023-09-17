@@ -25,6 +25,8 @@ function Login() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { currentLoginStatus } = useSelector(state => state.auth)
+ 
+    const {errorStatus} = useSelector(state => state.auth)
 
     const handleSubmit = async(e) => {
         e.preventDefault()
@@ -39,8 +41,10 @@ function Login() {
 
       dispatch(validateAccount(account))
 
-      navigate('/user/profile')
+        navigate('/user/profile')
+   
        
+
     
     }
 
@@ -72,6 +76,8 @@ function Login() {
 
                     <button className='px-16 bg-[#62D0B6] mt-4 text-[#fff] rounded-xl py-2'>Sign in</button>
                 </form>
+
+                {errorStatus ? <p className='text-[red] w-[300px] text-center mt-4'>Password or username are wrong or account doesnt exists.</p> : <></>}
         </div>
        
     </div>
