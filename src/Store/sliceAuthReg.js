@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 
 const sliceAuthReg = createSlice({
@@ -42,10 +42,27 @@ const sliceAuthReg = createSlice({
         logOut: (state, action) => {
             state.currentLoginStatus = 'off'
             localStorage.setItem('loginStatus', JSON.stringify(state.currentLoginStatus))
-        } 
+        },
+
+        addfavList(state, action) {
+            const itemIndex = state.currentAccount.favList.findIndex((item) => item.id === action.payload.id)
+            if(itemIndex >= 0) {
+                console.log('Item is already on your fav list')
+            } else {
+                state.currentAccount.favList.push(action.payload)
+            }
+            localStorage.setItem('currentAccount', JSON.stringify(state.currentAccount))
+
+        },
+
+        removefavList(state, action) {
+            const delItem = state.currentAccount.favList.filter((item) => item.id !== action.payload.id)
+            state.currentAccount.favList = delItem
+            localStorage.setItem('currentAccount', JSON.stringify(state.currentAccount))
+        }
 
     }
 })
 
-export const { storeAccount, validateAccount, logOut } = sliceAuthReg.actions
+export const { storeAccount, validateAccount, logOut, addfavList, removefavList } = sliceAuthReg.actions
 export default sliceAuthReg.reducer

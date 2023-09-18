@@ -6,6 +6,7 @@ import { Rate } from 'antd';
 import Link from 'antd/es/typography/Link';
 import { NavLink } from 'react-router-dom';
 import { addToCart } from '../../Store/sliceCart';
+import { addfavList } from '../../Store/sliceAuthReg';
 
 
 function SingleProduct({item}) {
@@ -38,7 +39,7 @@ function SingleProduct({item}) {
           <Rate disabled defaultValue={item.rating} />
           <p className='font-semibold'>{item.price}$</p>
           <div className='flex gap-5 mt-4'>
-            <div className='border-2 p-2'>
+            <div onClick={() => dispatch(addfavList(item))} className='border-2 p-2 cursor-pointer'>
                 <img className='w-8' src={srce} alt="" />
             </div>
 
@@ -70,7 +71,7 @@ function SingleProduct({item}) {
       <p className='font-semibold'>{item.price}$</p>
 
       <div className='flex gap-5 mt-4'>
-            <div className='border-2 p-2'>
+            <div onClick={() => dispatch(addfavList(item))} className='border-2 p-2 cursor-pointer'>
                 <img className='w-8' src={srce} alt="" />
             </div>
 
