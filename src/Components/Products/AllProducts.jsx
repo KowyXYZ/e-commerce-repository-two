@@ -11,6 +11,8 @@ import list from '../../Assets/Icons/list.png'
 import {  useDispatch, useSelector } from 'react-redux'
 import { getStatus } from '../../Store/sliceStyling';
 
+import PaginationCustom from './PaginationCustom';
+
 import { getSearchText } from '../../Store/sliceSearch';
 import { Link } from 'react-router-dom';
 
@@ -64,6 +66,13 @@ function AllProducts() {
     }, [])
 
 
+    const [currentPage, setCurrentPage] = useState(1  )
+    const [postsPerPage, setPostsPerPage] = useState(12)
+
+    const lastPostIndex = currentPage * postsPerPage //10
+    const firstPostIndex = lastPostIndex - postsPerPage // 0
+    const currPosts = products.slice(firstPostIndex, lastPostIndex)
+
   return (
     <div className='flex-col container mx-auto w-full flex  gap-5'>
         <div className='border-2 flex gap-4 items-center justify-between px-2 py-2 rounded-2xl'>
@@ -109,14 +118,14 @@ function AllProducts() {
                  { status === 'list' ?
                      <div className='container mx-auto flex flex-col items-start justify-end gap-8'>
                     {
-                    val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
+                    val === 'all' ? currPosts.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  currPosts.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
                     }
                     </div>
                     
                     :  
-                    <div className='container mx-auto flex justify-end items-start flex-wrap gap-8 '>
+                    <div className='container mx-auto flex justify-start items-start flex-wrap gap-8 '>
                     {
-                    val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
+                    val === 'all' ? currPosts.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  currPosts.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
                     }
                     </div>}               
                 {/* <div className='container mx-auto flex justify-end items-start flex-wrap gap-8 '>
@@ -127,6 +136,10 @@ function AllProducts() {
                 </div> */}
 
         </div>
+
+        <PaginationCustom totalPosts={products.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
+
+
        
        
     </div>
