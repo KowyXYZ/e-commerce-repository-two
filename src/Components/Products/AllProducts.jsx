@@ -78,19 +78,10 @@ function AllProducts() {
         <div className='border-2 flex gap-4 items-center justify-between px-2 py-2 rounded-2xl'>
             <p className='text-[gray]'>Sory by :  <span className='text-[#000]'>{sorting}</span></p>
 
-            <div className='border-2 rounded-3xl border-[gray] py-1 px-3'>
-                    <div className='flex justify-center items-center gap-3'>
-                       
-                    <input onChange={(e) => handleSearch(e)} type='text' className='w-[400px] outline-none' placeholder='Search . . .'/>
-                    <Link to='/products/searching'>
-                         <img  className='w-8 cursor-pointer' src={searchbar} alt="" />
-                    </Link>
-                   
-                    </div>
-                </div>
+          
             <div className='flex gap-4 items-center justify-center'>
-                <img onClick={ () => {dispatch(getStatus('list'))}} src={list} alt="list" />
-                <img onClick={ () => {dispatch(getStatus('grid'))}} src={grid} alt="grid" />
+                <img className={status === 'list' ? 'invert' : 'invert-0'} onClick={ () => {dispatch(getStatus('list'))}} src={list} alt="list" />
+                <img className={status === 'grid' ? 'invert' : 'invert-0'}  onClick={ () => {dispatch(getStatus('grid'))}} src={grid} alt="grid" />
 
                 
             </div>
@@ -118,14 +109,14 @@ function AllProducts() {
                  { status === 'list' ?
                      <div className='container mx-auto flex flex-col items-start justify-end gap-8'>
                     {
-                    val === 'all' ? currPosts.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  currPosts.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
+                    val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
                     }
                     </div>
                     
                     :  
                     <div className='container mx-auto flex justify-start items-start flex-wrap gap-8 '>
                     {
-                    val === 'all' ? currPosts.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  currPosts.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
+                    val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
                     }
                     </div>}               
                 {/* <div className='container mx-auto flex justify-end items-start flex-wrap gap-8 '>
@@ -137,7 +128,7 @@ function AllProducts() {
 
         </div>
 
-        <PaginationCustom totalPosts={products.length} postsPerPage={postsPerPage} setCurrentPage={setCurrentPage}/>
+       
 
 
        
