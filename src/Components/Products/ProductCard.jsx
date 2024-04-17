@@ -25,8 +25,8 @@ function ProductCard() {
  
   return (
     <div className='w-full  '>
-        <div className='container mx-auto flex justify-center items-start gap-10'>
-            <div className='flex  flex-col items-end justify-center text-end mt-16'>
+        <div className='container mx-auto flex flex-col sm:flex-row justify-center sm:items-start items-center gap-10'>
+            <div className='flex  flex-col items-center sm:items-end text-center justify-center sm:text-end mt-16'>
                 <p>{loader.brand}</p>
                 <p className='text-[32px] font-semibold'>{loader.title}</p>
                 <div className='flex gap-2 items-center justify-start text-center'>
@@ -34,7 +34,7 @@ function ProductCard() {
                 <p>({loader.rating})</p>
                 </div>
                 
-                <p className='text-[gray] w-[400px] text-[20px]'>{loader.description}</p>
+                <p className='text-[gray] w-[300px] text-[20px]'>{loader.description}</p>
                 <p className='text-[#208a81]'>{loader.category}</p>
                 <div className='flex items-start justify-center gap-2 mt-4 '>
                 <p className='text-[20px] '>New price: <span className='font-semibold'>{ Math.round(final)}$</span></p>
@@ -68,7 +68,7 @@ function ProductCard() {
                     
                 </div>
                 <p>Currently in stock: {loader.stock}</p>
-                <div className=' flex justify-center items-center gap-4'>
+                <div className=' flex flex-wrap justify-center items-center gap-4'>
                     { loader.images.map( (el, index) => {
                         return (
                             <img onClick={ () => setCurrent(index)} className='border-2 p-2 w-44 h-44 object-contain rounded-2xl' src={el} alt='images'/>
