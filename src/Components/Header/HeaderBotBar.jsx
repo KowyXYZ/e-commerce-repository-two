@@ -31,11 +31,11 @@ function HeaderBotBar() {
 
 
   return (
-    <div className='w-full bg-[#fff] py-6'>
-        <div className='container mx-auto flex justify-center items-center'>
+    <div className='sm:w-full bg-[#fff] py-6'>
+        <div className='container mx-auto sm:flex hidden  items-center'>
 
 
-            <div className='flex justify-between gap-[900px] items-center'>
+            <div className='flex justify-between gap-4 items-center'>
 
                 <div className='flex gap-8'>
                     <div className='flex items-center justify-center gap-5'>
@@ -60,18 +60,6 @@ function HeaderBotBar() {
                     </div>
                 </div>
               
-{/* 
-                <div>
-                    {setsearchdata.map((el, index) => {
-                        return (
-                            <div>
-                                <p>{el.title}</p>
-                            </div>
-                        )
-                    })}
-                </div>
-               */}
-
                 
 
                 <div>
@@ -83,6 +71,28 @@ function HeaderBotBar() {
             </div>
 
 
+        </div>
+
+
+        <div className='flex justify-center  gap-8 items-center sm:hidden text-[14px]'>
+
+     
+                    <div className='flex items-center text-center justify-center '>
+                        <div className='flex flex-col gap-2 items-center justify-center'>
+                          
+                            <p className='font-semibold'>Cart items: {cart.cartItems.length}</p>
+                        </div>
+                     
+                    </div>
+
+                    <div className='flex items-center text-center justify-center gap-2'>
+                        <div className='flex flex-col items-center justify-center'>
+                            {currentLoginStatus === 'on' ? <p>{currentAccount.username}</p> : <p>User</p>}
+                            {currentLoginStatus === 'on' ?  <Link to='/user/profile' className='font-semibold'>Go to profile</Link> :  <Link to='/user/login' className='font-semibold'>Go to profile</Link>}
+                           
+                        </div>
+                        
+                    </div>
         </div>
     </div>
   )

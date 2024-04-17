@@ -88,20 +88,20 @@ function SpecOffer() {
   return (
     <div className='w-full mt-12 space-y-4'>
 
-        <div className='flex justify-start items-center container mx-auto text-start'>
+        <div className='flex justify-center items-center container mx-auto text-start'>
             <Link to='/products'>
             <p className='text-[20px] font-bold underline text-[#208a81] '>Special offers &#8594;</p>
             </Link>
         </div>
 
-        <div className='container mx-auto flex justify-center items-center gap-24'>
-            <div className='text-center flex-col justify-center items-center border-2 border-[#208a81] px-32 pb-10 rounded-3xl'>
+        <div className='container mx-auto flex-col sm:flex-row flex justify-center items-center gap-24 '>
+            <div className='text-center flex-col justify-center items-center border-2 border-[#208a81] sm:px-32 pb-10 rounded-3xl'>
                 <div className='flex items-center justify-center'>
                  <div className='flex flex-col space-y-2'>
                  <p className='text-[#208a81]'>smartwatch</p>
                   <p className='text-[26px] font-semibold'>Smartwatch</p>
                   <p className='text-[22px]  text-[red]'><span className='text-[gray] line-through mr-2'>300$</span>150$ </p>
-                 <p className='border-2 rounded-3xl border-[red] text-[40px] py-1 px-12 font-bold'><span className='text-[20px]'>Time remaining:</span> <br/>{timer}</p>
+                 <p className='border-2 rounded-3xl border-[red] text-[26px] py-1 px-12 font-bold'><span className='text-[20px]'>Time remaining:</span> <br/>{timer}</p>
                  </div>
                  <div>
                 <img src={watch} alt="" />
@@ -115,7 +115,7 @@ function SpecOffer() {
                         <img className='w-8' src={srce} alt="" />
                     </div>
 
-                    <div className='flex justify-center items-center border-2 p-2 px-32 bg-[#208a81] text-[#fff]'>
+                    <div className='flex justify-center items-center border-2 p-2 sm:px-32 bg-[#208a81] text-[#fff]'>
                         <p>Add to cart</p>
                         <img className='w-8 invert' src={cart} alt="" />
                     </div>
@@ -124,13 +124,13 @@ function SpecOffer() {
 
             </div>
 
-            <div className='text-center flex-col justify-center items-center border-2 border-[#208a81] px-32 pb-10 rounded-3xl'>
+            <div className='text-center flex-col justify-center items-center border-2 border-[#208a81] sm:px-32 pb-10 rounded-3xl'>
                 <div className='flex items-center justify-center'>
                  <div className='flex flex-col space-y-2'>
                  <p className='text-[#208a81]'>smartwatch</p>
                   <p className='text-[26px] font-semibold'>Smartwatch</p>
                   <p className='text-[22px]  text-[red]'><span className='text-[gray] line-through mr-2'>300$</span>150$ </p>
-                 <p className='border-2 border-[red] rounded-3xl text-[40px] py-1 px-12 font-bold'><span className='text-[20px]'>Time remaining:</span> <br/>{timer}</p>
+                 <p className='border-2 border-[red] rounded-3xl text-[26px] py-1 px-12 font-bold'><span className='text-[20px]'>Time remaining:</span> <br/>{timer}</p>
                  </div>
                  <div>
                 <img src={watch} alt="" />
@@ -144,7 +144,7 @@ function SpecOffer() {
                         <img className='w-8' src={srce} alt="" />
                     </div>
 
-                    <div className='flex justify-center items-center border-2 p-2 px-32 bg-[#208a81] text-[#fff]'>
+                    <div className='flex justify-center items-center border-2 p-2 sm:px-32 bg-[#208a81] text-[#fff]'>
                         <p>Add to cart</p>
                         <img className='w-8 invert' src={cart} alt="" />
                     </div>

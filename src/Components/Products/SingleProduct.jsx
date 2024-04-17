@@ -27,7 +27,7 @@ function SingleProduct({item}) {
       {status === 'list' ? 
 
       // <NavLink to={`/products/product/${item.id}`}>
-      <div className='flex gap-10 w-[100vh] justify-start text-start items-center border-2  p-4 py-2  drop-shadow-xl rounded-3xl space-y-2'>
+      <div className='flex flex-col sm:flex-row gap-10 sm:w-[100vh] justify-start text-start items-center border-2  p-4 py-2  drop-shadow-xl rounded-3xl space-y-2'>
           <NavLink to={`/products/product/${item.id}`}>
              <img className='w-64 h-64 object-cover rounded-3xl' src={item.thumbnail} alt="" />
           </NavLink>
@@ -35,7 +35,7 @@ function SingleProduct({item}) {
 
           <p className='text-[#208a81]'>{item.category}</p>
           <p className='w-[200px] font-semibold'>{item.title}</p>
-          <p className='text-[gray] w-[400px]'>{item.description}</p>
+          <p className='text-[gray] w-[300px]'>{item.description}</p>
           <Rate disabled defaultValue={item.rating} />
           <p className='font-semibold'>{item.price}$</p>
           <div className='flex gap-5 mt-4'>

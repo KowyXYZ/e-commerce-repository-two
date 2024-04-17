@@ -7,7 +7,7 @@ import mc from '../../Assets/Icons/master.png'
 function FooterCredits() {
   return (
     <div className='w-full bg-[#1D1F1F] py-6'>
-      <div className='container mx-auto flex justify-between items-center text-[#fff]'>
+      <div className='container mx-auto flex-col sm:flex-row flex justify-between items-center text-[#fff]'>
         <div className='flex justify-center items-center gap-5'>
             <img src={pp} alt="pp" />
             <img src={mc} alt="mc" />

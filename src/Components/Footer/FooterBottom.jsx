@@ -8,7 +8,7 @@ import { NavLink } from 'react-router-dom'
 function FooterBottom() {
   return (
     <div className='w-full py-6'>
-      <div className='container mx-auto flex justify-between items-start'>
+      <div className='container flex-col  sm:flex-row mx-auto flex sm:justify-between sm:items-start items-center justify-center'>
 
         <div className='flex flex-col justify-center items-center space-y-2'>
             <p className='font-semibold text-[18px]'>Follow us on</p>
@@ -38,9 +38,9 @@ function FooterBottom() {
             <NavLink  className='hover:text-[#62D0B6]'>Contact us</NavLink>
         </div>
 
-        <div className='flex justify-center text-end items-end flex-col text-[gray] space-y-2'>
+        <div className='flex justify-center text-center items-center mt-5 sm:mt-0 flex-col text-[gray] space-y-2'>
             <p className='font-semibold text-[18px] text-[#000]'>About our store</p>
-            <p className='w-[500px]'>Basket store is one of the best stores that sell digital products at the best prices and international brands. Shop now and see more designs and enjoy the best offers and discounts</p>
+            <p className='w-[300px] sm:w-[500px]'>Basket store is one of the best stores that sell digital products at the best prices and international brands. Shop now and see more designs and enjoy the best offers and discounts</p>
         </div>
       </div>
     </div>

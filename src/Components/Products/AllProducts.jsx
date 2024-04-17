@@ -75,11 +75,11 @@ function AllProducts() {
 
   return (
     <div className='flex-col container mx-auto w-full flex  gap-5'>
-        <div className='border-2 flex gap-4 items-center justify-between px-2 py-2 rounded-2xl'>
+        <div className='border-2 sm:flex hidden gap-4 mx-2 sm:mx-0 items-center justify-between px-2 py-2 rounded-2xl'>
             <p className='text-[gray]'>Sory by :  <span className='text-[#000]'>{sorting}</span></p>
 
           
-            <div className='flex gap-4 items-center justify-center'>
+            <div className='flex items-center gap-2 justify-center'>
                 <img className={status === 'list' ? 'invert' : 'invert-0'} onClick={ () => {dispatch(getStatus('list'))}} src={list} alt="list" />
                 <img className={status === 'grid' ? 'invert' : 'invert-0'}  onClick={ () => {dispatch(getStatus('grid'))}} src={grid} alt="grid" />
 
@@ -89,10 +89,10 @@ function AllProducts() {
         </div>
     
 
-        <div className='w-full flex gap-5'>
+        <div className='w-full flex flex-col sm:flex-row gap-5'>
 
 
-                <div className='flex flex-col justify-start items-start flex-wrap gap-5 bg-[#fff] p-8 h-full border-2 rounded-3xl '>
+                <div className='hidden sm:flex flex-col justify-start items-start flex-wrap gap-5 bg-[#fff] p-8 h-full border-2 rounded-3xl '>
                     <h1 className='text-[30px] font-semibold'>Categories</h1>
                     <Radio.Group onChange={changeVal} className='flex flex-col gap-5' defaultValue="all" buttonStyle="solid">
                         <Radio.Button value='all'>All</Radio.Button>
@@ -106,15 +106,20 @@ function AllProducts() {
                 </div>
 
 
+                <div className='flex sm:hidden justify-center items-center '>
+                    <h1 className='uppercase font-black text-[24px]'>Products</h1>
+                    
+                </div>
+
                  { status === 'list' ?
-                     <div className='container mx-auto flex flex-col items-start justify-end gap-8'>
+                     <div className='container sm:mx-auto flex mx-2 flex-col sm:items-start sm:justify-end justify-center items-center gap-8'>
                     {
                     val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
                     }
                     </div>
                     
                     :  
-                    <div className='container mx-auto flex justify-start items-start flex-wrap gap-8 '>
+                    <div className='container mx-auto sm:flex hidden justify-start items-start flex-wrap gap-8 '>
                     {
                     val === 'all' ? products.map((key, index) => {return(<SingleProduct item={key} key={index}/>)}) :  products.filter((item) => item.category.toLowerCase().includes(val)).map((el, index) => {return(<SingleProduct item={el}/>)})
                     }

@@ -8,7 +8,7 @@ import delivery from '../../Assets/Icons/delivery.png'
 function BelowHeroInfo() {
   return (
     <div className='w-full py-12'>
-        <div className=' flex justify-center items-center container mx-auto py-4 gap-10'>
+        <div className=' flex flex-col sm:flex-row justify-center items-center container mx-auto py-4 gap-10'>
 
 
             <div className='flex justify-center items-center gap-5 '>

@@ -20,7 +20,7 @@ function TopProducts() {
 
   return (
     <div className='w-full space-y-6'>
-        <div className='flex justify-start items-center container mx-auto text-start'>
+        <div className='flex justify-center items-center container mx-auto text-start'>
             <Link to='/products'>
             <p className='text-[20px] font-bold underline text-[#208a81] '>Check more products &#8594;</p>
             </Link>
